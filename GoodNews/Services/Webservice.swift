@@ -19,12 +19,15 @@ class Webservice {
                 switch response.result {
                     case .success:
                         do {
+                            //원하는 데이터를 추출하고, 데이터를 다시 인코딩한다.
+                            ////////////////////////////////////////////////////
                             let rcvData = response.result.value as! NSDictionary
                             let encodeData = rcvData["articles"] as! [Any]
                             let jsonData = try JSONSerialization.data(withJSONObject:encodeData, options: .prettyPrinted)
                             let reqJSONStr = String(data: jsonData, encoding: .utf8)
                             let data = reqJSONStr?.data(using: .utf8)
-  
+                            ////////////////////////////////////////////////////
+
                             let articleArray:[Article] = try JSONDecoder().decode([Article].self, from: data!)
                             completion(articleArray)
                         }
