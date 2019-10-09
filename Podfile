@@ -8,3 +8,4 @@ target 'GoodNews' do
   # Pods for GoodNews
   pod 'Alamofire'
 end
+   
